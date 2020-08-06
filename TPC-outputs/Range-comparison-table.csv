@@ -1,0 +1,8 @@
+"","Parameter","Pairwise.comparison"
+"1","Lower thermal limit (°C)","0.034 [-0.636, 0.724]"
+"2","Upper thermal limit (°C)","-0.04 [-0.628, 0.545]"
+"3","Thermal optimum (°C)","-0.654 [-1.405, 0.108]"
+"6","Performance maximum (cm/cm/day)","-0.071 [-0.194, 0.046]"
+"4","Critical breadth (°C)","-0.074 [-0.967, 0.848]"
+"5","B50 (°C)","0.018 [-1.191, 1.239]"
+"7","Area","-3.043 [-7.485, 1.344]"
