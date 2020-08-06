@@ -10,15 +10,12 @@
 ###########################
 library(reshape2)
 library(ggplot2)
-library(dplyr)
-library(purrr)
-library(tidyr)
 
 
 
 
 ###### 
-###### PAIRWISE COMPARISONS BETWEEN NATIVE AND INVASIVE GROUPS (need a lot of computing power!)
+###### PAIRWISE COMPARISONS BETWEEN NATIVE AND INVASIVE GROUPS
 ###### 
 tidy_perf_pops <- read.csv("TPC-outputs/tidy_perf_pops_subset.csv")[,-1] # draws from the model
 
@@ -129,7 +126,7 @@ write.csv(pwctable, "TPC-outputs/Range-comparison-table.csv")
 density_x_minBT <- range_comps %>% 
   ggplot(aes(x_minBT)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$x_minBT), y=0), color="purple", shape=17, size=5) +
   xlab("Lower thermal limit (°C)") + 
   ylab("Density") +
@@ -144,7 +141,7 @@ density_x_minBT <- range_comps %>%
 density_x_maxBT <- range_comps %>% 
   ggplot(aes(x_maxBT)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$x_maxBT), y=0), color="purple", shape=17, size=5) +
   xlab("Upper thermal limit (°C)") + 
   ylab("Density") +
@@ -158,7 +155,7 @@ density_x_maxBT <- range_comps %>%
 density_maximaBT <- range_comps %>% 
   ggplot(aes(maximaBT)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$maximaBT), y=0), color="purple", shape=17, size=5) +
   xlab("Thermal optimum (°C)") + 
   ylab("Density") +
@@ -172,7 +169,7 @@ density_maximaBT <- range_comps %>%
 density_breadthBT <- range_comps %>% 
   ggplot(aes(breadthBT)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$breadthBT), y=0), color="purple", shape=17, size=5) +
   xlab("Critical breadth (°C)") + 
   ylab("Density") +
@@ -186,7 +183,7 @@ density_breadthBT <- range_comps %>%
 density_B50 <- range_comps %>% 
   ggplot(aes(B50)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$B50), y=0), color="purple", shape=17, size=5) +
   xlab("B50 (°C)") + 
   ylab("Density") +
@@ -200,7 +197,7 @@ density_B50 <- range_comps %>%
 density_max_RGR <- range_comps %>% 
   ggplot(aes(max_RGR)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$max_RGR), y=0), color="purple", shape=17, size=5) +
   xlab("Performance maximum (cm/cm/day)") + 
   ylab("Density") +
@@ -214,7 +211,7 @@ density_max_RGR <- range_comps %>%
 density_area <- range_comps %>% 
   ggplot(aes(area)) +
   geom_vline(xintercept=0, size=2) +
-  geom_density(fill="orange", alpha=0.05) +
+  geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$area), y=0), color="purple", shape=17, size=5) +
   xlab("Area") + 
   ylab("Density") +
@@ -323,7 +320,7 @@ pairwise_probs_groups_av(stan_df = tidy_perf_pops,
 
 density_maximaBT <- tidy_perf_pops %>% 
   ggplot(aes(maximaBT, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -339,7 +336,7 @@ density_maximaBT <- tidy_perf_pops %>%
 
 density_x_minBT <- tidy_perf_pops %>% 
   ggplot(aes(x_minBT, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -355,7 +352,7 @@ density_x_minBT <- tidy_perf_pops %>%
 
 density_x_maxBT <- tidy_perf_pops %>% 
   ggplot(aes(x_maxBT, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -371,7 +368,7 @@ density_x_maxBT <- tidy_perf_pops %>%
 
 density_breadthBT <- tidy_perf_pops %>% 
   ggplot(aes(breadthBT, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -387,7 +384,7 @@ density_breadthBT <- tidy_perf_pops %>%
 
 density_B50 <- tidy_perf_pops %>% 
   ggplot(aes(B50, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -403,7 +400,7 @@ density_B50 <- tidy_perf_pops %>%
 
 density_max_RGR <- tidy_perf_pops %>% 
   ggplot(aes(max_RGR, group = Population, fill = Range, colour=Range)) +
-  geom_density(alpha=0.05) +
+  geom_density(alpha=0.1) +
   scale_fill_manual(values=c("red", "blue")) +
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
@@ -428,12 +425,33 @@ dat <- read.csv("TPC-outputs/Pairwise-tables_subset/area_pairwise.csv",
                 row.names=1)[c(1,6:13,2:5,30:31,14:29), c(1,6:13,2:5,30:31,14:29)]
 dat <- dat[c(31:1), c(31:1)]
 
+# rename populations according to Aleah's new population names in 1-17bioclim_pops.csv
+newpops <- read.csv("Raw-data/1-17bioclim_pops.csv")
+dat2 <- dat
+
+# create a dataset with the row names of dat in order
+newnames <- data.frame(rows.old = rownames(dat2),
+                       rows.new = rep("NA", length(rownames(dat2))))
+
+# fill in newnames with the new pop names
+for(i in 1:dim(newnames)[1]){
+  newnames$rows.new[i] <- newpops$ID3[which(newpops$ID2==newnames$rows.old[i])]
+}
+
+# replace row and column names in dat
+colnames(dat2) <- newnames$rows.new
+rownames(dat2) <- newnames$rows.new
+
+# now reorder dat2
+dat3 <- dat2[c(order(rownames(dat2))), c(order(rownames(dat2)))]
+dat4 <- dat3[c(1,6:13,2:5,14,24:31,15:23), c(1,6:13,2:5,14,24:31,15:23)]
+dat5 <- dat4[c(31:1), c(31:1)]
 
 # create a matrix the same size as the pairwise comparison table, but containing 
 # 0's for non-significant comparisons and 1's for significant comparisons
 aster <- matrix(NA, nrow=31, ncol=31)
 for(i in 1:dim(aster)[1]){
-  vals <- dat[,i]
+  vals <- dat5[,i]
   for(j in 1:dim(aster)[1]){
     val <- as.numeric(as.character(vals[j]))
     if(is.na(val)==FALSE){aster[j,i] <- 0} else{aster[j,i] <- 1}
@@ -446,15 +464,15 @@ for(i in 1:dim(aster)[1]){
 # numeric values (no asterisks)
 nums <- matrix(NA, nrow=31, ncol=31)
 for(i in 1:dim(nums)[1]){
-  nums[,i] <- as.numeric(stringr::str_remove_all(as.character(dat[,i]), "[*]")) * (-1)
+  nums[,i] <- as.numeric(stringr::str_remove_all(as.character(dat5[,i]), "[*]")) * (-1)
 }
-rownames(nums) <- rownames(dat)
-colnames(nums) <- colnames(dat)
+rownames(nums) <- rownames(dat5)
+colnames(nums) <- colnames(dat5)
 
 
 
 # plot heatmap with asterisks for significant comparisons
-# datasets: aster (0=nonsignif/1=signif matrix), and nums (values of dat without asterisks)
+# datasets: aster (0=nonsignif/1=signif matrix), and nums (values of dat5 without asterisks)
 # http://www.sthda.com/english/wiki/ggplot2-quick-correlation-matrix-heatmap-r-software-and-data-visualization
 
 # Get upper triangle of the correlation matrix
@@ -519,7 +537,7 @@ ggheatmapArea <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
 
 library(ggpubr)
 theme_set(theme_minimal())
-pdf("Figures/Manuscript-figs/Supp-Pairwise-comparison-area.pdf", height=7, width=7)
+pdf("Figures/Manuscript-figs/Supp-Pairwise-comparison-area_new-pop-names.pdf", height=7, width=7)
 figure <- ggarrange(ggheatmapArea)
 figure
 dev.off()

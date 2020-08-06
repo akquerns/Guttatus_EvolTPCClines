@@ -63,20 +63,6 @@ Raw$RGRTOT1x <- as.numeric(c(Raw$RGRTOT1))
 
 Raw$RGRTOT1x[which(Raw$RGRTOT1<0)] <- 0
 
-####################################################################################################
-#############################Renamed populations based on latitude#####################################################################################################################################
-
-#Within my worldclim data, I renamed the populations based on their latitude, rather than my pre-existing number system
-
-#Here I'm adding that column
-
-Raw$pop <- c(rep(NA,length(Raw$Population))) 
-
-data <- read_csv("Raw-data/1-17bioclim_pops.csv")
-
-for(i in 1:dim(Raw)[1]){
-  Raw$pop[i] <- as.character(data$ID3[which(data$ID2==Raw$Population[i])])}
-
 
 ########################################################################################################################################NAME FILE#######################################################################################################################################################
 write.csv(Raw, "Raw-data/RGRcalcs.csv")

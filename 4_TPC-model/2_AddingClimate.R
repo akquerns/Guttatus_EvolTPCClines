@@ -23,7 +23,7 @@ mean_df_subset$meanwarmest <- c(rep(NA,length(mean_df_subset$Population)))#mean 
 mean_df_subset$mincoldest <- c(rep(NA,length(mean_df_subset$Population))) #min temp of coldest month, bio_6
 
 #Add a column for "ID3", in which I have renamed the populations
-#mean_df_subset$pop2 <- c(rep(NA,length(mean_df_subset$Population))) #populations renumbered based on latitude within each range
+mean_df_subset$pop2 <- c(rep(NA,length(mean_df_subset$Population))) #populations renumbered based on latitude within each range
 
 
 for(i in 1:dim(mean_df_subset)[1]){
@@ -34,7 +34,7 @@ for(i in 1:dim(mean_df_subset)[1]){
   mean_df_subset$maxwarmest[i] <- as.numeric(worldclim$bio_5[which(worldclim$ID2==mean_df_subset$Population[i])]) 
   mean_df_subset$meanwarmest[i] <- as.numeric(worldclim$bio_10[which(worldclim$ID2==mean_df_subset$Population[i])]) 
   mean_df_subset$mincoldest[i] <- as.numeric(worldclim$bio_6[which(worldclim$ID2==mean_df_subset$Population[i])]) 
- # mean_df_subset$pop2[i] <- as.character(worldclim$ID3[which(worldclim$ID2==mean_df_subset$Population[i])]) 
+ mean_df_subset$pop2[i] <- as.character(worldclim$ID3[which(worldclim$ID2==mean_df_subset$Population[i])]) 
 }
 
 #Edit variables to reflect actual vals
