@@ -53,7 +53,7 @@ mg_pcaTEMP <- PCA(mg_wcTEMP3, scale.unit=TRUE, quali.sup = 1, graph = FALSE)
 ## (optional) view PCA summary and variable and individual  ##
 ## values(coordinates, correlation, cosine2, contribuytion) ##
 summary(mg_pcaTEMP)
-write.csv(mg_pcaTEMP$var, "1-PCA/pcaTEMPvar.csv")
+write.csv(mg_pcaTEMP$var, "Processed-data/pcaTEMPvar.csv")
 mg_pcaTEMP$var
 mg_pcaTEMP$ind
 
@@ -75,7 +75,7 @@ ggplot(data=mg_wcTEMP, aes(x=pc1, y=pc2, label=ID2)) + scale_fill_manual(values=
 
 #####################################################################################
 #export data
-write.csv(mg_wcTEMP, "1-PCA/PCATEMP.csv")
+write.csv(mg_wcTEMP, "Processed-data/PCATEMP.csv")
 
 #What populations are most similar based on the top 3 climate variables from PCA? 
 #a Tukey test to group them together?

@@ -44,6 +44,6 @@ mean_df_subset$meanwarmest <- mean_df_subset$meanwarmest/10
 mean_df_subset$mincoldest <- mean_df_subset$mincoldest/10
 mean_df_subset$tempseason <- mean_df_subset$tempseason/100 #Standard deviation *100
 
-write.csv(mean_df_subset, "Raw-data/mean_df_subsetwithclim.csv")
+write.csv(mean_df_subset, "Processed-data/mean_df_subsetwithclim.csv")
 
 

@@ -15,7 +15,7 @@ library(MuMIn)
 library("dplyr")
 
 #Load Data
-data <- read.csv("Raw-data/mean_df_subsetwithclim.csv")
+data <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
 
 ##First we need to check for normality of resids##
 

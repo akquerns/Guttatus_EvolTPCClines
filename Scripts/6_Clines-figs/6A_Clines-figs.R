@@ -15,9 +15,9 @@ library(MuMIn)
 library("dplyr")
 
 #Load Data
-data <- read.csv("Raw-data/mean_df_subsetwithclim.csv")
-dataN <- read.csv("Raw-data/mean_df_subsetwithclim.csv") %>% dplyr::filter(Range=="N")
-dataI <- read.csv("Raw-data/mean_df_subsetwithclim.csv") %>% dplyr::filter(Range=="I")
+data <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
+dataN <- read.csv("Processed-data/mean_df_subsetwithclim.csv") %>% dplyr::filter(Range=="N")
+dataI <- read.csv("Processed-data/mean_df_subsetwithclim.csv") %>% dplyr::filter(Range=="I")
 
 #Set colors
 group.colors <- c(I = "red", N = "blue")

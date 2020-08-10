@@ -46,7 +46,7 @@ creds_pops$pop <- c(rep(NA,length(creds_pops$Population)))
 mean_df$pop <- c(rep(NA,length(mean_df$Population))) 
 mean_df_ci$pop <- c(rep(NA,length(mean_df_ci$Population))) 
 
-data <- read.csv("Raw-data/mean_df_subsetwithclim.csv")
+data <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
 
 for(i in 1:dim(gutDat)[1]){
   gutDat$pop[i] <- as.character(data$pop2[which(data$Population==gutDat$Population[i])])}
