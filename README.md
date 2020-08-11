@@ -1,6 +1,7 @@
 # Guttatus_EvolTPCClines
 This project contains the pertinent codes used for the project "The Evolution of Thermal Tolerance and Clines in Native and Invasive Populations of Mimulus guttatus"
-Please follow the folders in numbered order
+
+Please follow the scripts in numbered order
 
 Brief overview of raw data:
 
