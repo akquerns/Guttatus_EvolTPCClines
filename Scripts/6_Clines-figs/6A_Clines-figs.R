@@ -33,7 +33,7 @@ group.linesUKsig1 <- c(UK = "solid", US = "dashed")
 #######################################################################################################################################Linear mods of latitude for each ####################################################################################################################################
 
 #Optima
-z1<-ggplot() + geom_jitter(data=data, aes(x = lat, y = maximaBT, group=Range, col=Range, shape=Range), size=3) +
+z1<-ggplot() + geom_jitter(data=data, aes(x = lat, y = maximaBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+
   scale_x_continuous(name=expression(paste("Latitude (°N)")))+
@@ -46,7 +46,7 @@ z1
 #theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)
 
 #Upper limit-nothing is sig.
-z3 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_maxBT, group=Range, col=Range, shape=Range), size=3) +
+z3 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_maxBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +
   scale_x_continuous(name=expression(paste("Latitude (°N)")))+
@@ -56,7 +56,7 @@ z3
 
 #Lower  limit
 #UK is sig. US is N.S.
-z4 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_minBT, group=Range, col=Range, shape=Range), size=3)+ geom_smooth(data=dataI, aes(x = lat, y = x_minBT, group=Range, col=Range, linetype=Range), method="lm", level=0.95, size=1.5)+
+z4 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_minBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75)+ geom_smooth(data=dataI, aes(x = lat, y = x_minBT, group=Range, col=Range, alpha=1), method="lm", level=0.95, size=1.25, alpha=0.3)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +
   scale_x_continuous(name=expression(paste("Latitude (°N)")))+
@@ -64,7 +64,7 @@ z4 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_minBT, group=Range, c
 z4
 
 #Thermal breadth--only sig in UK
-z5<-ggplot() + geom_jitter(data=data, aes(x = lat, y = B50, group=Range, col=Range, shape=Range), size=3)+ geom_smooth(data=dataI, aes(x = lat, y = B50, group=Range, col=Range, linetype=Range), method="lm", level=0.95, size=1.5)+
+z5<-ggplot() + geom_jitter(data=data, aes(x = lat, y = B50, group=Range, col=Range, shape=Range), size=3, alpha=0.75)+ geom_smooth(data=dataI, aes(x = lat, y = B50, group=Range, col=Range, linetype=Range), method="lm", level=0.95, size=1.25, alpha=0.3)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +  scale_x_continuous(name=expression(paste("Latitude (°N)")))+
   scale_y_continuous(name=expression(paste(T[breadth], " (°C)")))#+ scale_linetype_manual(values=group.linesUKsig)
@@ -73,8 +73,8 @@ z5
 #######################################################################################################################################Linear mods of Mean annual temp###################################################################################################################################
 
 #Optima--overall effect of MAT is significant
-y1<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = maximaBT, group=Range, col=Range, shape=Range), size=3) +
- geom_smooth(data=data, aes(x = MAT, y = maximaBT, col=Range), method="lm", col="black", level=0.95, size=1.5)+
+y1<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = maximaBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
+ geom_smooth(data=data, aes(x = MAT, y = maximaBT, col=Range), method="lm", col="black", level=0.95, size=1.25, alpha=0.3)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +
   scale_x_continuous(name=expression(paste("MAT (°C)")))+
@@ -87,7 +87,7 @@ y1
 #theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)
 
 #Upper limit--N.S. for all (would've been marginally sig. at 0.053)
-y3<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = x_maxBT, group=Range, col=Range, shape=Range), size=3) +
+y3<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = x_maxBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+ scale_linetype_manual(values=group.linesUKsig)+
   scale_x_continuous(name=expression(paste("MAT (°C)")))+
@@ -95,7 +95,7 @@ y3<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = x_maxBT, group=Range, col
 y3
 
 #Lower limit--again NS, but would've been marginally sign. at 0.055
-y4<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = x_minBT, group=Range, col=Range, shape=Range), size=3)+
+y4<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = x_minBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+ scale_linetype_manual(values=group.linesUKsig)+
   scale_x_continuous(name=expression(paste("MAT (°C)")))+
@@ -106,7 +106,7 @@ y4
 ##############################################################################################################################################TS by Tbreadth cline#######################################################################################################################################
 
 #breadth
-y5<-ggplot() + geom_jitter(data=data, aes(x = tempseason, y = B50, group=Range, col=Range, shape=Range), size=3) +
+y5<-ggplot() + geom_jitter(data=data, aes(x = tempseason, y = B50, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+
   scale_y_continuous(name=expression(paste(T[breadth], "(°C)")))+
