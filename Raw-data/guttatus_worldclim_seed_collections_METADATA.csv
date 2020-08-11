@@ -1,0 +1,24 @@
+﻿Column,Data-type,Description
+ID1,Character,Range from which population was obtained (invasive UK or native US)
+ID2,Character,"Original population code--created prior to selecting populations for use in thermal performance experiments. ""I"" indicates invasive UK, and ""N"" incidates native North America."
+bio_1,Numeric,Annual Mean Temperature
+bio_2,Numeric,Mean Diurnal Range (Mean of monthly (max temp - min temp))
+bio_3,Numeric,Isothermality (BIO2/BIO7) (×100)
+bio_4,Numeric,Temperature Seasonality (standard deviation ×100)
+bio_5,Numeric,Max Temperature of Warmest Month
+bio_6,Numeric,Min Temperature of Coldest Month
+bio_7,Numeric,Temperature Annual Range (BIO5-BIO6)
+bio_8,Numeric,Mean Temperature of Wettest Quarter
+bio_9,Numeric,Mean Temperature of Driest Quarter
+bio_10,Numeric,Mean Temperature of Warmest Quarter
+bio_11,Numeric,Mean Temperature of Coldest Quarter
+bio_12,Numeric,Annual Precipitation
+bio_13,Numeric,Precipitation of Wettest Month
+bio_14,Numeric,Precipitation of Driest Month
+bio_15,Numeric, Precipitation Seasonality (Coefficient of Variation)
+bio_16,Numeric,Precipitation of Wettest Quarter
+bio_17,Numeric,Precipitation of Driest Quarter
+bio_18,Numeric,Precipitation of Warmest Quarter
+bio_19,Numeric,Precipitation of Coldest Quarter
+Longitude,Numeric,Longitude in decimal degrees (°W)
+Latitude,Numeric,Latitude in decimal degrees (°N)

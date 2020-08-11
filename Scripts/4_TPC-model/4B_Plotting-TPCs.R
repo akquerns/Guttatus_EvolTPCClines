@@ -38,7 +38,7 @@ mean_df_ci <- read.csv("TPC-outputs/mean_df_ci_subset.csv")[,-1] # 95% credible 
 
 #######################################################################################################################Adding renamed populations to gutDat for graphing######################################################################################################################
 
-#Note for explanation: I ended up renaming my populations later on for analysis purposes (wanted to structure population numbering based on latitude; I did this in Excel by adding a column "pop2", and here I added these numbers to my TPC graphs)
+#Note for explanation: I ended up renaming my populations later on for analysis purposes (wanted to structure population numbering based on latitude; I did this in Excel by adding a column "pop", and here I added these numbers to my TPC graphs). I renumbered my populations in the bioclim file and added those numbers to my TPC outputs.
 
 gutDat$pop <- c(rep(NA,length(gutDat$Population))) 
 tidy_perf_pops$pop <- c(rep(NA,length(tidy_perf_pops$Population))) 
@@ -46,21 +46,22 @@ creds_pops$pop <- c(rep(NA,length(creds_pops$Population)))
 mean_df$pop <- c(rep(NA,length(mean_df$Population))) 
 mean_df_ci$pop <- c(rep(NA,length(mean_df_ci$Population))) 
 
-data <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
+data <- read.csv("Raw-data/1-17bioclim_pops.csv")
 
 for(i in 1:dim(gutDat)[1]){
-  gutDat$pop[i] <- as.character(data$pop2[which(data$Population==gutDat$Population[i])])}
+  gutDat$pop[i] <- as.character(data$ID3[which(data$ID2==gutDat$Population[i])])}
 
-#for(i in 1:dim(tidy_perf_pops)[1]){
-  #tidy_perf_pops$pop[i] <- as.character(data$pop2[which(data$Population==tidy_perf_pops$Population[i])])}
+for(i in 1:dim(tidy_perf_pops)[1]){
+  tidy_perf_pops$pop[i] <- as.character(data$ID3[which(data$ID2==tidy_perf_pops$Population[i])])}
 
 for(i in 1:dim(creds_pops)[1]){
-  creds_pops$pop[i] <- as.character(data$pop2[which(data$Population==creds_pops$Population[i])])}
+  creds_pops$pop[i] <- as.character(data$ID3[which(data$ID2==creds_pops$Population[i])])}
 
 for(i in 1:dim(mean_df)[1]){
-  mean_df$pop[i] <- as.character(data$pop2[which(data$Population==mean_df$Population[i])])}
+  mean_df$pop[i] <- as.character(data$ID3[which(data$ID2==mean_df$Population[i])])}
 
-for(i in 1:dim(mean_df_ci)[1]){ mean_df_ci$pop[i] <- as.character(data$pop2[which(data$Population==mean_df_ci$Population[i])])
+for(i in 1:dim(mean_df_ci)[1]){
+  mean_df_ci$pop[i] <- as.character(data$ID3[which(data$ID2==mean_df_ci$Population[i])])
 }
 
 
@@ -79,6 +80,14 @@ mean_df$pop <- factor(mean_df$pop, levels(mean_df$pop)[ c(1,6:13,2:5,14,24:31,15
 
 mean_df_ci$pop <- as.factor(mean_df_ci$pop)
 mean_df_ci$pop <- factor(mean_df_ci$pop, levels(mean_df_ci$pop)[ c(1,6:13,2:5,14,24:31,15:23)])
+
+###
+write.csv(tidy_perf_pops, "TPC-outputs/tidy_perf_pops_subset.csv", row.names = FALSE)
+write.csv(creds_pops, "TPC-outputs/creds_pops_subset.csv", row.names=FALSE)
+write.csv(gutDat, "Processed-data/gutDat_subset.csv", row.names = FALSE)
+write.csv(mean_df, "TPC-outputs/mean_df_subset.csv", row.names=FALSE)
+write.csv(mean_df_ci, "TPC-outputs/mean_df_ci_subset.csv", row.names=FALSE)
+
 ############ 
 # Write supplementary table showing mean and CI for tpc parameters 
 mean_ci_table <- mean_df %>% 

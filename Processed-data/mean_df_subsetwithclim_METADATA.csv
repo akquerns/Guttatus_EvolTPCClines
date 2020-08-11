@@ -1,0 +1,35 @@
+﻿Column,Data-type,Description
+Population,Character,"Original population code--created prior to selecting populations for use in thermal performance experiments. ""I"" indicates invasive UK, and ""N"" incidates native North America."
+x_min,Numeric,lower thermal limit
+draw,Numeric,the step within the chain 
+x_max,Numeric,upper thermal limit
+shape1,Numeric,"first of the two parameters that modifies curve asymmetry; when shape1 is larger than shape2 , the curve will skew right"
+shape2,Numeric,"second parameter that modifies curve asymmetry; when shape2 is larger than shape1 , the curve will skew left"
+stretch,Numeric,performance maximum/the maximum expected value of the response trait 
+nu,Numeric,variance
+maxima,Numeric,thermal optimum
+breadth,Numeric,cricial breadth
+area,Numeric,area under curve
+special,Numeric,not important in this context! Used for previous calculations
+idx,Numeric,Row number indicator referencing tidy_perf_pops dataset (not important in this context!)
+max_RGR,Numeric,value of the Kumaraswamy function at performance maximum
+opt_breadth_low,Numeric,lower limit of the calculated breadth
+opt_breadth_high,Numeric,upper limit of the calculated breadth
+opt_breadth,Numeric,"difference between low and high, i.e., the breadth"
+x_minBT,Numeric,"lower thermal limit, back transformed"
+x_maxBT,Numeric,"upper thermal limit, back transformed"
+stretchBT,Numeric,"performance maximum/the maximum expected value of the response trait, back transformed"
+maximaBT,Numeric,"thermal optimum, back transformed"
+breadthBT,Numeric,"cricial breadth, back transformed"
+B50_low,Numeric,lower limit of B50
+B50_high,Numeric,upper limit of B50
+B50,Numeric,span of temperatures across which at least 50% of maximum RGR is achieved
+Range,Character,"Range from which population was obtained (invasive UK= ""I"" or native US= ""N"")"
+pop,Character,"New population code--created after selecting populations for use in thermal performance experiments. ""I"" indicates invasive UK, and ""N"" incidates native North America. Numbers following ""I"" or ""N"" are based on latitude, where ""1"" indicates the lowest latitude. "
+lat,Numeric,Latitude in decimal degrees (°N)
+long,Numeric,Longitude in decimal degrees (°W)
+MAT,Numeric,Annual Mean Temperature (bio_1)
+tempseason,Numeric,Temperature Seasonality (standard deviation ×100) (bio_4)
+maxwarmest,Numeric,Max Temperature of Warmest Month (bio_5)
+meanwarmest,Numeric,Mean Temperature of Warmest Quarter (bio_10)
+mincoldest,Numeric,Min Temperature of Coldest Month (bio_6)

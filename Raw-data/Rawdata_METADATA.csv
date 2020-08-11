@@ -1,0 +1,13 @@
+﻿Column,Data-type,Description
+Round,Character,Numbered 1-5; separate occurences of chamber use which happened between 8/2019 and 1/2020
+Population,Character,"Original population code--created prior to selecting populations for use in thermal performance experiments. ""I"" indicates invasive UK, and ""N"" incidates native North America."
+Family,Character,Original family code--created prior to selecting populations for use in thermal performance experiments. Numbered 35-326.
+Replicate,Numeric,"Indicates the numbered replicate cutting of each family taken within a round of chamber use. Within each round, two replicate cuttings were subjected to one of three temperature treatments (i.e. 0.01+0.02 were subjected to temp. A, 0.03+0.04 to temp. B, and 0.05+0.06 to temp. C)"
+daytemp,Numeric,The 16-hour daytime temperature treatment
+nighttemp,Numeric,The 8 hour nighttime temperature treatment
+StemIN,Numeric,The length (cm) of the primary stem of a replicate cutting prior to being subjected to a temperature treatment (but after receiving a 2-week establishment period)
+StemOUT,Numeric,The length (cm) of the primary stem of a replicate cutting after to being subjected to a week long temperature treatment 
+secondarytotIN,Numeric,"The total number of secondary branches (including both side branches and stolons) counted after a 2-week establishment period, but prior to being subjected to a temperature treatment"
+secondarytotOUT,Numeric,The total number of secondary branches (including both side branches and stolons) counted after being subjected to a week long temperature treatment
+AvgsecondaryIN,Numeric,"The length (cm) of an average secondary branch (either side branch or stolon) measured after a 2-week establishment period, but prior to being subjected to a temperature treatment"
+AvgsecondaryOUT,Numeric,The length (cm) of an average secondary branch (either side branch or stolon) measured after being subjected to a temperature treatment
