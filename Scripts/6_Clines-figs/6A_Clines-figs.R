@@ -134,7 +134,7 @@ grid.arrange(z5,y5, nrow=1)
 ##FIG 4
 # breadth by max RGR: significant, no diffc across ranges
 
-B2<-ggplot() + geom_jitter(data=data, aes(x = B50, y = max_RGR, group=Range, col=Range, shape=Range), size=2)+ geom_smooth(data=data, aes(x = B50, y = max_RGR, col=Range), method="lm", col="black", level=0.95, size=1) +
+B2<-ggplot() + geom_jitter(data=data, aes(x = B50, y = max_RGR, group=Range, col=Range, shape=Range), size=2, alpha=0.75)+ geom_smooth(data=data, aes(x = B50, y = max_RGR, col=Range), method="lm", col="black", level=0.95, size=1.25, alpha=0.3) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+
   scale_x_continuous(name=expression(paste(T[breadth], " (°C)")))+
