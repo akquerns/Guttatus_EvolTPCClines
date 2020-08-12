@@ -82,13 +82,17 @@ summary(perfmaxvsB502)
 B50vslat1<- lm(B50~lat*Range, data=data)
 summary(B50vslat1)
 
-#Interaction term is significant, so we need to conduct individual models for ranges
+#Remove nonsignificant interaction term (close but no cigar--about 0.08)
+B50vslat2<- lm(B50~lat+Range, data=data)
+summary(B50vslat2)
 
-B50vslatN <- lm (B50~lat, data=data%>% dplyr::filter(Range=="N"))
-summary(B50vslatN)
+#individual models for ranges (in case we need, because interaction term was somewhat close to significant)
 
-B50vslatI <- lm (B50~lat, data=data %>% dplyr::filter(Range=="I"))
-summary(B50vslatI)
+#B50vslatN <- lm (B50~lat, data=data%>% dplyr::filter(Range=="N"))
+#summary(B50vslatN)
+
+#B50vslatI <- lm (B50~lat, data=data %>% dplyr::filter(Range=="I"))
+#summary(B50vslatI)
 
 #effect of lat on Thermal breadth is significant in invasive range
 
@@ -117,13 +121,18 @@ summary(xmaxvslat2)
 xmaxvsMAT1<- lm(x_maxBT~MAT*Range, data=data)
 summary(xmaxvsMAT1)
 
-#Interaction term is significant, so we conduct models for each range
+#Interaction term is nonsignificant, so we remove interaction term
 
-xmaxvsMATN <- lm (x_maxBT~MAT, data=data%>% dplyr::filter(Range=="N"))
-summary(xmaxvsMATN)
+xmaxvsMAT2<- lm(x_maxBT~MAT+Range, data=data)
+summary(xmaxvsMAT2)
 
-xmaxvsMATI <- lm (x_maxBT~MAT, data=data %>% dplyr::filter(Range=="I"))
-summary(xmaxvsMATI)
+#Interaction term could be considered marginally significant, so we conduct models for each range just in case
+
+#xmaxvsMATN <- lm (x_maxBT~MAT, data=data%>% dplyr::filter(Range=="N"))
+#summary(xmaxvsMATN)
+
+#xmaxvsMATI <- lm (x_maxBT~MAT, data=data %>% dplyr::filter(Range=="I"))
+#summary(xmaxvsMATI)
 
 #effect of MAT on Tmax is marginally sign. in the invasive range (0.053)
 
@@ -156,4 +165,28 @@ xminvsMATI <- lm (x_minBT~MAT, data=data %>% dplyr::filter(Range=="I"))
 summary(xminvsMATI)
 
 #effect of MAT on Tmin is marginally significant (0.055) in the invasive range
+
+################################################Area###############################################
+#Does area under the curve differ with breadth? does it differ with maximum performance?
+
+#If area under the curve varies with breadth and Pmax
+
+#B50
+areavsB50<- lm(area~ B50*Range, data=data)
+summary(areavsB50)
+
+#remove NS interaction term
+
+areavsB502<- lm(area~ B50+Range, data=data)
+summary(areavsB502)
+
+#Pmax
+
+areavsmaxperf<- lm(area~ max_RGR*Range, data=data)
+summary(areavsmaxperf)
+
+#remove NS interaction term
+
+areavsmaxperf2<- lm(area~ max_RGR+Range, data=data)
+summary(areavsmaxperf2)
 
