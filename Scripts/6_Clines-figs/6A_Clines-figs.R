@@ -118,9 +118,9 @@ y5
 
 ##FIG 5
 
-grid.arrange(z1,y1, z3, y3, z4,y4, z5, y5, ncol=2) # export as image: 500 x 1000
+grid.arrange(z1,y1, z3, y3, z4,y4, z5, y5, ncol=2) # export as image: 500 x 1000; save in Figures, edit in Manuscript-figs
 
-#Reduced figs: 1200x600
+#Reduced figs: 1200x600 (for ppt)
 
 grid.arrange(z1,y1, nrow=1)
 grid.arrange(z3,y3, nrow=1)
@@ -141,4 +141,4 @@ B2<-ggplot() + geom_jitter(data=data, aes(x = B50, y = max_RGR, group=Range, col
   scale_y_continuous(name=expression(paste(P[max], " (cm/cm/day)")))
 B2
 
-#save as IMG 300x 300
+#save as IMG 300x 300 in Figures folder--edited to add legend in Manuscript-figs
