@@ -32,7 +32,7 @@ group.linesUKsig1 <- c(UK = "solid", US = "dashed")
 
 #######################################################################################################################################Linear mods of latitude for each ####################################################################################################################################
 
-#Optima
+#Optima-NS
 z1<-ggplot() + geom_jitter(data=data, aes(x = lat, y = maximaBT, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+
@@ -63,11 +63,11 @@ z4 <- ggplot() + geom_jitter(data=data, aes(x = lat, y = x_minBT, group=Range, c
   scale_y_continuous(name=expression(paste(T[min], " (°C)")))
 z4
 
-#Thermal breadth--only sig in UK
-z5<-ggplot() + geom_jitter(data=data, aes(x = lat, y = B50, group=Range, col=Range, shape=Range), size=3, alpha=0.75)+ geom_smooth(data=dataI, aes(x = lat, y = B50, group=Range, col=Range, linetype=Range), method="lm", level=0.95, size=1.25, alpha=0.3)+
+#Thermal breadth--NS
+z5<-ggplot() + geom_jitter(data=data, aes(x = lat, y = B50, group=Range, col=Range, shape=Range), size=3, alpha=0.75)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +  scale_x_continuous(name=expression(paste("Latitude (°N)")))+
-  scale_y_continuous(name=expression(paste(T[breadth], " (°C)")))#+ scale_linetype_manual(values=group.linesUKsig)
+  scale_y_continuous(name=expression(paste(T[breadth], " (°C)")))#+ scale_linetype_manual(values=group.linesUKsig)+ geom_smooth(data=dataI, aes(x = lat, y = B50, group=Range, col=Range, linetype=Range), method="lm", level=0.95, size=1.25, alpha=0.3)
 z5
 
 #######################################################################################################################################Linear mods of Mean annual temp###################################################################################################################################
@@ -105,7 +105,7 @@ y4
 
 ##############################################################################################################################################TS by Tbreadth cline#######################################################################################################################################
 
-#breadth
+#breadth--NS
 y5<-ggplot() + geom_jitter(data=data, aes(x = tempseason, y = B50, group=Range, col=Range, shape=Range), size=3, alpha=0.75) +
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors)+
