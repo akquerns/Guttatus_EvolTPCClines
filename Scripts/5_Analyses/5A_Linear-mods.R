@@ -62,6 +62,14 @@ summary(optvsMAT2)
 
 #Overall effect of MAT is significant
 
+#Let's try to further understand the low R-square in this relationship
+
+ToptvsMATN <- lm (maximaBT~MAT, data=data%>% dplyr::filter(Range=="N"))
+summary(ToptvsMATN)
+
+ToptvsMATI <- lm (maximaBT~MAT, data=data %>% dplyr::filter(Range=="I"))
+summary(ToptvsMATI)
+
 ###############################################Pmax################################################
 
 #(S-G Tradeoffs)
