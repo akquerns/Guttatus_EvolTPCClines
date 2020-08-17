@@ -69,9 +69,9 @@ mg_wcTEMP$pc2 <- mg_pcaTEMP$ind$coord[,2]
 library(ggrepel)
 
 ## create PCA plot, point color by country ##
-ggplot(data=mg_wcTEMP, aes(x=pc1, y=pc2, label=ID2)) + scale_fill_manual(values=c("red","blue","green","purple"), name="") + geom_point(aes(fill=ID1), shape=21, color="gray90", size=3) + labs(x="PC1",y="PC2")
+ggplot(data=mg_wcTEMP, aes(x=pc1, y=pc2, label=ID2)) + scale_fill_manual(values=c("red","blue","green","purple"), name="") + geom_point(aes(fill=ID1), shape=21, color="gray90", size=5) + labs(x="PC1",y="PC2")
 
-#save as IMG: 400x400
+#save as IMG: 600x600--MAINTAIN ASPECT RATIO
 
 #####################################################################################
 #export data
