@@ -96,6 +96,8 @@ mean_ci_table <- as.data.frame(mean_ci_table)
 mean_ci_table <- mean_ci_table[,c("Population", "Range.x",
                                   "maximaBT", "maximaBT_lci", "maximaBT_uci",
                                   "B50", "B50_lci", "B50_uci",
+                                  "B50_low", "B50_low_lci", "B50_low_uci",
+                                  "B50_high", "B50_high_lci", "B50_high_uci",
                                   "breadthBT", "breadthBT_lci", "breadthBT_uci",
                                   "x_minBT", "x_minBT_lci", "x_minBT_uci",
                                   "x_maxBT", "x_maxBT_lci", "x_maxBT_uci",
@@ -104,6 +106,8 @@ mean_ci_table <- mean_ci_table[,c("Population", "Range.x",
 mean_ci_table <- mean_ci_table %>% mutate_at(vars(-c(Population,Range.x)), funs(round(., 2)))
 mean_ci_table$ToptCI <- paste(mean_ci_table$maximaBT, " [", mean_ci_table$maximaBT_lci, ", ", mean_ci_table$maximaBT_uci,"]", sep="")
 mean_ci_table$B50CI <- paste(mean_ci_table$B50, " [", mean_ci_table$B50_lci, ", ", mean_ci_table$B50_uci,"]", sep="")
+mean_ci_table$B50_lowCI <- paste(mean_ci_table$B50_low, " [", mean_ci_table$B50_low_lci, ", ", mean_ci_table$B50_low_uci,"]", sep="")
+mean_ci_table$B50_highCI <- paste(mean_ci_table$B50_high, " [", mean_ci_table$B50_high_lci, ", ", mean_ci_table$B50_high_uci,"]", sep="")
 mean_ci_table$breadthCI <- paste(mean_ci_table$breadthBT, " [", mean_ci_table$breadthBT_lci, ", ", mean_ci_table$breadthBT_uci,"]", sep="")
 mean_ci_table$x_minCI <- paste(mean_ci_table$x_minBT, " [", mean_ci_table$x_minBT_lci, ", ", mean_ci_table$x_minBT_uci,"]", sep="")
 mean_ci_table$x_maxCI <- paste(mean_ci_table$x_maxBT, " [", mean_ci_table$x_maxBT_lci, ", ", mean_ci_table$x_maxBT_uci,"]", sep="")
@@ -114,12 +118,23 @@ mean_ci_table <- mean_ci_table[,c("Population",
                                   "Range",
                                   "ToptCI", 
                                   "B50CI", 
+                                  "B50_lowCI",
+                                  "B50_highCI",
                                   "breadthCI",
                                   "x_minCI", 
                                   "x_maxCI", 
                                   "max_RGRCI", 
                                   "areaCI")]
 mean_ci_table <- mean_ci_table[c(1,6:13,2:5,30:31,14:29),]
+
+# add new population names to table
+mean_ci_table$pop2 <- rep(NA, dim(mean_ci_table)[1])
+newnames <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
+for(i in 1:dim(mean_ci_table)[1]){
+  mean_ci_table$pop2[i] <- newnames$pop[which(newnames$Population==mean_ci_table$Population[i])]
+}
+table(mean_ci_table$Population, mean_ci_table$pop2)
+
 write.csv(mean_ci_table, "TPC-outputs/mean_ci_table_subset.csv")
 
 
