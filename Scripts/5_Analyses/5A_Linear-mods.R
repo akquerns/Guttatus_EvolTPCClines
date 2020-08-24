@@ -252,3 +252,14 @@ summary(areavsmaxperf2)
 AIC(areavsmaxperf)
 AIC(areavsmaxperf2)
 
+#Alternatively: Pearson's correlation coefficients
+
+#Area vs Breadth
+
+pear1<-cor.test(data$area, data$B50, method = "pearson")
+pear1
+
+#Area vs Pmax
+
+pear2<-cor.test(data$area, data$max_RGR, method = "pearson")
+pear2
