@@ -27,6 +27,10 @@ View(guttatus_worldclim_seed_collections)#%>%
 #Boxplot of US vs UK: TEMPERATURE
 boxplot((guttatus_worldclim_seed_collections$bio_1/10)~guttatus_worldclim_seed_collections$ID1)
 
+#T-tests for variables of interest
+t.test (mg_wcTEMP$bio_1~mg_wcTEMP$ID1)
+t.test (mg_wcTEMP$bio_4~mg_wcTEMP$ID1)
+
 ###################################################################################
 #PCA to tell us which clim variables are most valuable for clustering data        #
 ###################################################################################
