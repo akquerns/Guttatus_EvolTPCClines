@@ -202,19 +202,22 @@ tpclwd <- 0.5 # tpc lwd
 tpca <- 0.75 # tpc line alpha
 
 range_names <- list(
-  'I'="Invasive",
-  'N'="Native")
+  'N'="Native",
+  'I'="Invasive"
+  )
 range_labeller <- function(variable,value){
   return(range_names[value])
 }
 
+
+gutDat$Range <- factor(gutDat$Range,levels=c("N","I"))
 
 bayesFit_pops5 <- ggplot(data = filter(creds_pops, level == 95)) +
   geom_point(data = gutDat, position=position_jitter(w = 0.5), shape=21, alpha = 0.35,
              aes(daytemp, RGR, group=pop, color=Range), inherit.aes = F, size=1.25) + # data for family averages at each temperature
   labs(x = expression(paste("Temperature (°C)")), 
        y = expression(paste("RGR (cm cm"^-1, " day"^-1,")"))) + 
-  scale_fill_manual(values=c("red", "blue")) + # fill for Range (invasive=red, native=blue)
+  scale_fill_manual(values=c("firebrick3", "deepskyblue1")) + # fill for Range (invasive=red, native=blue)
   geom_line(aes(x, mu, group=pop, color=Range), inherit.aes = F, lwd = tpclwd, alpha=tpca) + # tpc for each group
   facet_wrap(~Range, nrow=1, ncol=2, labeller=range_labeller) +  # panel for each range
   theme_bw() +
@@ -226,7 +229,7 @@ bayesFit_pops5 <- ggplot(data = filter(creds_pops, level == 95)) +
         plot.margin = margin(0,0.5,0,0.2, "cm")) +
   geom_segment(data=mean_df, aes(x=maximaBT, y=max_RGR, xend=maximaBT, yend=0,group=pop, color=Range), 
                alpha=pla, lwd=plwd, inherit.aes=FALSE, lty=1) + # vertical lines for thermal optima
-  scale_color_manual(values=c( "red", "blue"))  +
+  scale_color_manual(values=c( "firebrick3", "deepskyblue1"))  +
   geom_segment(data=mean_df, aes(x=B50_low, y=max_RGR*0.5, xend=B50_high, yend=max_RGR*0.5, group=pop, color=Range), 
                alpha=pla, lwd=plwd, inherit.aes=FALSE, lty=1) + # horizontal line for B50 
   scale_x_continuous(limits=c(0,50), expand = c(0, 0)) +

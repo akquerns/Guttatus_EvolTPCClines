@@ -10,6 +10,7 @@
 ###########################
 library(reshape2)
 library(ggplot2)
+library(dplyr)
 
 
 
@@ -124,12 +125,12 @@ write.csv(pwctable, "TPC-outputs/Range-comparison-table.csv")
 ## visualize differences
 
 density_x_minBT <- range_comps %>% 
-  ggplot(aes(x_minBT)) +
+  ggplot(aes(x_minBT, ..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$x_minBT), y=0), color="purple", shape=17, size=5) +
   xlab("Lower thermal limit (°C)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -139,12 +140,12 @@ density_x_minBT <- range_comps %>%
 
 
 density_x_maxBT <- range_comps %>% 
-  ggplot(aes(x_maxBT)) +
+  ggplot(aes(x_maxBT,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$x_maxBT), y=0), color="purple", shape=17, size=5) +
   xlab("Upper thermal limit (°C)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -153,12 +154,12 @@ density_x_maxBT <- range_comps %>%
         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 density_maximaBT <- range_comps %>% 
-  ggplot(aes(maximaBT)) +
+  ggplot(aes(maximaBT,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$maximaBT), y=0), color="purple", shape=17, size=5) +
   xlab("Thermal optimum (°C)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -167,12 +168,12 @@ density_maximaBT <- range_comps %>%
         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 density_breadthBT <- range_comps %>% 
-  ggplot(aes(breadthBT)) +
+  ggplot(aes(breadthBT,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$breadthBT), y=0), color="purple", shape=17, size=5) +
   xlab("Critical breadth (°C)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -181,12 +182,12 @@ density_breadthBT <- range_comps %>%
         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 density_B50 <- range_comps %>% 
-  ggplot(aes(B50)) +
+  ggplot(aes(B50,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$B50), y=0), color="purple", shape=17, size=5) +
   xlab("B50 (°C)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -195,12 +196,12 @@ density_B50 <- range_comps %>%
         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 density_max_RGR <- range_comps %>% 
-  ggplot(aes(max_RGR)) +
+  ggplot(aes(max_RGR,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$max_RGR), y=0), color="purple", shape=17, size=5) +
   xlab("Performance maximum (cm/cm/day)") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -209,12 +210,12 @@ density_max_RGR <- range_comps %>%
         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 density_area <- range_comps %>% 
-  ggplot(aes(area)) +
+  ggplot(aes(area,..scaled..)) +
   geom_vline(xintercept=0, size=2) +
   geom_density(fill="orange", alpha=0.1) +
   geom_point(aes(x=mean(range_comps$area), y=0), color="purple", shape=17, size=5) +
   xlab("Area") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -325,7 +326,7 @@ density_maximaBT <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("Thermal optimum") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -341,7 +342,7 @@ density_x_minBT <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("Lower thermal limit") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -357,7 +358,7 @@ density_x_maxBT <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("Upper thermal limit") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -373,7 +374,7 @@ density_breadthBT <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("Critical breadth") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -389,7 +390,7 @@ density_B50 <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("B50") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
@@ -405,7 +406,7 @@ density_max_RGR <- tidy_perf_pops %>%
   scale_colour_manual(values=c("red", "blue")) +
   facet_wrap(~Range, ncol=1) +
   xlab("Performance maximum") + 
-  ylab("Density") +
+  ylab("Probability") +
   theme(axis.text=element_text(size=18),axis.title=element_text(size=20),legend.position = "none", 
         panel.border = element_rect(colour = "black", fill=NA, size=2),
         strip.background = element_rect(colour="black", fill=NA), 
