@@ -224,6 +224,12 @@ AIC(B50vsTS2, k=2)
 ################################################Area###############################################
 #Does area under the curve differ with breadth? does it differ with maximum performance?
 
+areabreadth<-ggplot() + geom_jitter(data=data, aes(x = B50, y = area, group=Range, col=Range, shape=Range), size=4, alpha=1)+ geom_smooth(data=data, aes(x = B50, y = area, col=Range), method="lm", col="black", level=0.95, size=1.5, alpha=0.3)
+areabreadth
+
+areapmax<-ggplot() + geom_jitter(data=data, aes(x = max_RGR, y = area, group=Range, col=Range, shape=Range), size=4, alpha=1)+ geom_smooth(data=data, aes(x = max_RGR, y = area, col=Range), method="lm", col="black", level=0.95, size=1.5, alpha=0.3)
+areapmax
+
 #If area under the curve varies with breadth and Pmax
 
 #B50

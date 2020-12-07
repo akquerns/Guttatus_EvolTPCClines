@@ -80,7 +80,7 @@ y1<-ggplot() + geom_jitter(data=data, aes(x = MAT, y = maximaBT, group=Range, co
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+scale_color_manual(values=group.colors) +
   scale_x_continuous(name=expression(paste("MAT (°C)")))+
-  scale_y_continuous(name=expression(paste(T[opt], " (°C)")))+ geom_smooth(data=dataI, aes(x = MAT, y = maximaBT, group=Range, col=Range), linetype="dotted", method="lm", level=0.95, size=1.25, alpha=0.3, se=FALSE)+ geom_smooth(data=dataN, aes(x = MAT, y = maximaBT, group=Range, col=Range), linetype="solid", method="lm", level=0.95, size=1, se=FALSE)
+  scale_y_continuous(name=expression(paste(T[opt], " (°C)")))+ geom_smooth(data=dataI, aes(x = MAT, y = maximaBT, group=Range, col=Range), linetype="dashed", method="lm", level=0.95, size=1, alpha=0.3, se=FALSE)+ geom_smooth(data=dataN, aes(x = MAT, y = maximaBT, group=Range, col=Range), linetype="solid", method="lm", level=0.95, size=1, se=FALSE)
 y1
 
 #Maxima--NOT USED IN MANUSCRIPT
