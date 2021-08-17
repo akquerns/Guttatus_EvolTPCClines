@@ -39,6 +39,8 @@ pop2 <- pop %>% dplyr::filter(Range=="I")
 #fonts()  
 
 library(viridis)
+install.packages("ggplot2", "grid", "maptools", "maps", dependencies = TRUE)
+
 
 sb <- c(x=-164,y=77) #anchor scalebar
 nor<- c(x=-160,y=34) #anchor compass
@@ -87,27 +89,31 @@ p2
 
 
 #clines of seasonality and MAT vs latitude
-data <- read.csv("Raw-data/mean_df_subsetwithclim.csv")
+data <- read.csv("Processed-data/mean_df_subsetwithclim.csv")
 
 
 #seasonality vs latitude
 
 group.colors <- c(I = "firebrick3", N = "deepskyblue1")
 
-p3 <- ggplot() + geom_jitter(data=data, aes(x=lat, y=tempseason, group=Population, col=Range, shape=Range, size=6)) + geom_smooth(data=data, aes(x=lat, y=tempseason, group=Range, col=Range), method="lm", level=0.95) +scale_color_manual(values=group.colors)+
+p3 <- ggplot() + geom_jitter(data=data, aes(x=lat, y=tempseason, group=Population, col=Range, shape=Range, size=6), alpha=0.65, width=0.6) + geom_smooth(data=data, aes(x=lat, y=tempseason, group=Range, col=Range), method="lm", level=0.95) +scale_color_manual(values=group.colors)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=12), axis.text.y = element_text(size=12), legend.position="none")+
   scale_x_continuous(name="Latitude (°N)") +
   scale_y_continuous(name="Temperature Seasonality (°C)")
 p3
+
+library(plotly)
+
+ggplotly(p3)
 #MAT vs latitude
-p4 <- ggplot() + geom_jitter(data=data, aes(x=lat, y=MAT, group=Population, col=Range, shape=Range, size=3)) + geom_smooth(data=data, aes(x=lat, y=MAT, group=Range, col=Range), method="lm", level=0.95)+scale_color_manual(values=group.colors)+
+p4 <- ggplot() + geom_jitter(data=data, aes(x=lat, y=MAT, group=Population, col=Range, shape=Range, size=3), alpha=0.65, width=0.6) + geom_smooth(data=data, aes(x=lat, y=MAT, group=Range, col=Range), method="lm", level=0.95)+scale_color_manual(values=group.colors)+
   theme_bw() + 
   theme(text = element_text(size=16), axis.text.x = element_text(angle=360, size=10), axis.text.y = element_text(size=10), legend.position="none") +
   scale_x_continuous(name="Latitude (°N)") +
   scale_y_continuous(name="Mean Annual Temperature (°C)")
 p4
-
+ggplotly(p4)
 grid.arrange(p1, p2, nrow=1)
 #save img 1200x600: FIG 2-MAPS
 
