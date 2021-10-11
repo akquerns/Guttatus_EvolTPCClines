@@ -7,7 +7,7 @@ library(magrittr)
 library(readxl)
 library(plotly)
 
-Raw <- read_csv("Raw-data/Rawdata.csv")
+Raw <- read_csv("Raw-data/Rawdata-withrangecol.csv")
 
 #All values in this dataset contain measurements for Avg SSL going in--however, some may have no measurement for Avg SSL coming out due to plant deterioration; therefore correct these NAs to zero
 Raw$AvgsecondaryOUT[is.na(Raw$AvgsecondaryOUT)] <- 0
@@ -63,7 +63,15 @@ Raw$RGRTOT1x <- as.numeric(c(Raw$RGRTOT1))
 
 Raw$RGRTOT1x[which(Raw$RGRTOT1<0)] <- 0
 
+ggplot(data=Raw, aes(x=Range, y=RGRTOT1x)) + geom_boxplot()
+Raw$Range <- as.character(Raw$Range)
+RawI<- filter(Raw, Range %in% "I")
+RawN<- filter(Raw, Range %in% "N")
 
+
+t.test(RawI$RGRTOT1x ,
+       RawN$RGRTOT1x,
+       conf.level=0.95)
 ########################################################################################################################################NAME FILE#######################################################################################################################################################
 write.csv(Raw, "Processed-data/RGRcalcs.csv", row.names = FALSE)
 
