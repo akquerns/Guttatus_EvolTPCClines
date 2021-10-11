@@ -69,8 +69,8 @@ RawI<- filter(Raw, Range %in% "I")
 RawN<- filter(Raw, Range %in% "N")
 
 
-t.test(RawI$RGRTOT1x ,
-       RawN$RGRTOT1x,
+t.test(RawI$secondarytotOUT ,
+       RawN$secondarytotOUT,
        conf.level=0.95)
 ########################################################################################################################################NAME FILE#######################################################################################################################################################
 write.csv(Raw, "Processed-data/RGRcalcs.csv", row.names = FALSE)
