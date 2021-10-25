@@ -63,7 +63,10 @@ Raw$RGRTOT1x <- as.numeric(c(Raw$RGRTOT1))
 
 Raw$RGRTOT1x[which(Raw$RGRTOT1<0)] <- 0
 
-ggplot(data=Raw, aes(x=Range, y=RGRTOT1x)) + geom_boxplot()
+Raw$Range<-as.character(Raw$Range)
+Raw$daytemp<-as.character(Raw$daytemp)
+ggplot(data=Raw, aes(x=daytemp, y=RGRTOT1x, fill=Range)) + geom_boxplot()  
+
 Raw$Range <- as.character(Raw$Range)
 RawI<- filter(Raw, Range %in% "I")
 RawN<- filter(Raw, Range %in% "N")

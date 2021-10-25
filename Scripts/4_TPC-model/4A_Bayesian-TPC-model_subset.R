@@ -49,7 +49,7 @@ extract <- rstan::extract
 ####
 #### Read in the raw, individual level data
 ####
-RawDat1<- read.csv("Raw-data/RGRcalcs.csv")
+RawDat1<- read.csv("Processed-data/RGRcalcs.csv")
 
 
 
