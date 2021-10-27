@@ -72,8 +72,29 @@ RawI<- filter(Raw, Range %in% "I")
 RawN<- filter(Raw, Range %in% "N")
 
 
+RawI25<- filter(RawI, daytemp %in% 25)
+RawN25<- filter(RawN, daytemp %in% 25)
+
+RawI30<- filter(RawI, daytemp %in% 30)
+RawN30<- filter(RawN, daytemp %in% 30)
+
+RawI2530<- filter(RawI, daytemp %in% c(25,30))
+RawN2530<- filter(RawN, daytemp %in% c(25,30))
+
 t.test(RawI$secondarytotOUT ,
        RawN$secondarytotOUT,
+       conf.level=0.95)
+
+t.test(RawI25$RGRTOT1x ,
+       RawN25$RGRTOT1x,
+       conf.level=0.95)
+
+t.test(RawI30$RGRTOT1x,
+       RawN30$RGRTOT1x,
+       conf.level=0.95)
+
+t.test(RawI2530$RGRTOT1x,
+       RawN2530$RGRTOT1x,
        conf.level=0.95)
 ########################################################################################################################################NAME FILE#######################################################################################################################################################
 write.csv(Raw, "Processed-data/RGRcalcs.csv", row.names = FALSE)
